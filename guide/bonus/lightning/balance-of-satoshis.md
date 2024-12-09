@@ -12,7 +12,7 @@ has_toc: false
 
 ---
 
-[Balance of Satoshis](https://github.com/alexbosworth/balanceofsatoshis){:target="_blank"} (BoS), created and maintained by LND developper Alex Bosworth, is a tool to work with LND. The most used feature of BoS is the rebalancing command that allows to manage your channels liquidity (which is the main focus of this guide), but BoS contains now many other lightning tools outside liquidity management (such as the creation of a node monitoring Telegram bot which is explained below).
+[Balance of Satoshis](https://github.com/alexbosworth/balanceofsatoshis){:target="_blank"} (BoS), created and maintained by LND developer Alex Bosworth, is a tool to work with LND. The most used feature of BoS is the rebalancing command that allows to manage your channels liquidity (which is the main focus of this guide), but BoS contains now many other lightning tools outside liquidity management (such as the creation of a node monitoring Telegram bot which is explained below).
 
 Difficulty: Medium
 {: .label .label-yellow }
@@ -102,9 +102,9 @@ Table of contents
 * Find the most recent tag and verify the signature. Add the `--tags` option to select even a lightweight/non-annotated tag. Add the `--abbrev=0` option to remove any long-format tag names.
 
   ```sh
-  $ git tag | sort --version-sort | tail -n 1
+  $ VERSION=$(git tag | sort --version-sort | tail -n 1); echo $VERSION
   > v12.4.1
-  $ git verify-tag v12.4.1
+  $ git verify-tag $VERSION
   > gpg: Good signature from "Alex Bosworth <alex.bosworth@gmail.com>" [unknown]
   > gpg: WARNING: This key is not certified with a trusted signature!
   > gpg:          There is no indication that the signature belongs to the owner.
@@ -289,7 +289,7 @@ You can also join the Balance of Satoshis Telegram group to get support: [https:
 * Find the most recent tag. Add the `--tags` option to select even a lightweight/non-annotated tag. Add the `--abbrev=0` option to remove any long-format tag names.
 
   ```sh
-  $ git tag | sort --version-sort | tail -n 1
+  $ VERSION=$(git tag | sort --version-sort | tail -n 1); echo $VERSION
   > v12.4.1
   ```
 
@@ -303,7 +303,7 @@ You can also join the Balance of Satoshis Telegram group to get support: [https:
 * Switch to new branch identified with `git fetch` (i.e. v99.99.9) and check that it is now  the most recent tag
 
   ```sh
-  $ git checkout v99.99.9
+  $ git checkout $VERSION
   > Previous HEAD position was 1b2a38d add docs for coop close on open
   > HEAD is now at dd58fc0 [...]
   $ git describe --tags --abbrev=0
@@ -313,7 +313,7 @@ You can also join the Balance of Satoshis Telegram group to get support: [https:
 * Check the GPG signature of the new version
 
   ```sh
-  $ git verify-tag v99.99.9
+  $ git verify-tag $VERSION
   > [...]
   > gpg: Good signature from "Alex Bosworth <alex.bosworth@gmail.com>" [unknown]
   > gpg: WARNING: This key is not certified with a trusted signature!

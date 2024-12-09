@@ -37,7 +37,7 @@ Table of contents
 
 Practically, most onchain bitcoin wallets will ask you to save a list of 12 or 24 words as backup to recover your funds in case you lose the wallet password or your hardware wallet.
 
-Technically, these words are known as "mnemonic words" and are used together with a salt to generate a "seed". The seed itself is hashed to derive your "master private key" and the "master chain code" which used for the various accounts in your HD wallet. You can read more about this process in [Chapter 5 of "Matering Bitcoin"](https://github.com/bitcoinbook/bitcoinbook/blob/develop/ch05.asciidoc#hd_wallets=){:target="_blank"}.
+Technically, these words are known as "mnemonic words" and are used together with a salt to generate a "seed". The seed itself is hashed to derive your "master private key" and the "master chain code" which used for the various accounts in your HD wallet. You can read more about this process in [Chapter 5 of "Matering Bitcoin"](https://github.com/bitcoinbook/bitcoinbook/blob/third_edition_print1/ch05_wallets.adoc#hierarchical-deterministic-hd-key-generation-bip32){:target="_blank"}.
 
 ![Mnemonics to private key illustration](../../../images/mnemonics-to-seed-to-private-key.png)
 
@@ -71,10 +71,10 @@ You will need the following hardware components:
 
 * Stainless steel fender washers (e.g. M8)
 * Stainless steel bolts and wingnuts (e.g. M8)
-* Letter and number metal stamp set (e.g. 3 mm heigth)
+* Letter and number metal stamp set (e.g. 3 mm height)
 * Hammer
 
-Quantities are dependent on how many backups you plan to make and how many words there are in each backup (12 or 24 usually). One backup of 24 mnemonic words will require only one bolt and wingnut and 24 washers. Although, a few more would be useful for pratice or if you make mistakes while stamping.
+Quantities are dependent on how many backups you plan to make and how many words there are in each backup (12 or 24 usually). One backup of 24 mnemonic words will require only one bolt and wingnut and 24 washers. Although, a few more would be useful for practice or if you make mistakes while stamping.
 
 The key thing is to make sure that all the sizes are compatible with each other:
 * The washers must have the same inner diameter as the bolt
@@ -99,13 +99,13 @@ Note: Punching into the washers can be quite difficult at time. Because of this,
 
 * (Optional) Punch the name of the wallet on a washer (e.g. "WALLET XY"). It might come handy in a few years to remember what wallet was associated with this backup and also because some wallets might use uncommon derivation paths. Check this [list of derivation paths](https://walletsrecovery.org/){:target="_blank"} supported by each wallet is maintained by @NVK and @J9Roem.
 
-* (Optional) Punch the date of creation of your wallet, known as the "birth date". This could help you quicken the search for your UTXOs when reconstructing the wallet in a few years. The wallet software used for recovery will not need to scan the entire blockhain but will start at the birth date. This does not apply to LND onchain wallets which use the azeed cipher scheme that includes birth date in the mnemonic words. 
+* (Optional) Punch the date of creation of your wallet, known as the "birth date". This could help you quicken the search for your UTXOs when reconstructing the wallet in a few years. The wallet software used for recovery will not need to scan the entire blockchain but will start at the birth date. This does not apply to LND onchain wallets which use the azeed cipher scheme that includes birth date in the mnemonic words. 
 
 * Stack all the washers on the bolt
 
 * Screw and tighten the wingnut
 
-You're set! You now have a DIY steel metal backup that will be resistant to fire, flood, schocks and other kind of environmental damages.
+You're set! You now have a DIY steel metal backup that will be resistant to fire, flood, shocks and other kinds of environmental damages.
 
 ---
 

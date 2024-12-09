@@ -29,16 +29,30 @@ We install [Ride The Lightning](https://github.com/Ride-The-Lightning/RTL#readme
 Starting with user “admin”, we add the Node.js package repository.
 If you installed BTC RPC Explorer, then you've already accomplished this step.
 
-* Add the Node.js (LTS version) software repository
+* Install Node.js (LTS version) using [nodesource distributions](https://github.com/nodesource/distributions/tree/master)
+* Download and import the Nodesource GPG key
 
   ```sh
-  $ curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
+  $ sudo apt-get update
+  $ sudo apt-get install -y ca-certificates curl gnupg
+  $ sudo mkdir -p /etc/apt/keyrings
+  $ curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
   ```
 
-* Install Node.js using the apt package manager
+* Create deb repository
+
+  ```sh
+  $ NODE_MAJOR=20
+  $ echo "deb [arch=arm64 signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list
   ```
-  $ sudo apt install nodejs
+
+* Update apt and install Node.js using the apt package manager
+
+  ```sh
+  $ sudo apt-get update
+  $ sudo apt-get install nodejs -y
   ```
+
 
 ### Firewall & reverse proxy
 
@@ -102,12 +116,12 @@ We do not want to run Ride the Lightning alongside bitcoind and lnd because of s
   $ cd RTL
 
   $ git tag | grep -E "v[0-9]+.[0-9]+.[0-9]+$" | sort --version-sort | tail -n 1
-  > v0.13.4
+  > v0.15.0
 
-  $ git checkout v0.13.4
+  $ git checkout v0.15.0
 
-  $ git verify-tag v0.13.4
-  > gpg: Signature made Tue 22 Nov 2022 03:04:55 CET
+  $ git verify-tag v0.15.0
+  > gpg: Signature made Thu 07 Dec 2023 05:40:57 AM CET
   > gpg:                using RSA key 3E9BD4436C288039CA827A9200C9E2BC2E45666F
   > gpg: Good signature from "saubyk (added uid) <39208279+saubyk@users.noreply.github.com>" [unknown]
   > gpg:                 aka "Suheb <39208279+saubyk@users.noreply.github.com>" [unknown]
@@ -120,7 +134,7 @@ We do not want to run Ride the Lightning alongside bitcoind and lnd because of s
   Downloading all dependencies can sometimes be very slow, so be patient and let the process run its course.
 
   ```sh
-  $ npm install --omit=dev --legacy-peer-deps
+  $ npm install --omit=dev
   ```
 
 The installation can take some time, and can hang on a single package for a long time.
@@ -298,10 +312,10 @@ Make sure to read the release notes first.
   $ cd /home/rtl/RTL
   $ git fetch
   $ git reset --hard
-  $ latest=$(git tag | grep -E "v[0-9]+.[0-9]+.[0-9]+$" | sort --version-sort | tail -n 1)
+  $ latest=$(git tag | grep -E "v[0-9]+.[0-9]+.[0-9]+$" | sort --version-sort | tail -n 1); echo $latest
   $ git checkout $latest
   $ git verify-tag $latest
-  $ npm install --omit=dev --legacy-peer-deps
+  $ npm install --omit=dev
   $ exit
   ```
 
